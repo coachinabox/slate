@@ -1,239 +1,90 @@
 ---
-title: API Reference
+title: TwelveShifts v2 API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://coachinabox.github.io/coach_in_a_box/mother'>'MOTHER' API</a>
+  - <a href='http://coachinabox.github.io/coach_in_a_box/doc#deck-of-cards-api'>Deck of Cards API</a>
+  - <a href='http://coachinabox.github.io/coach_in_a_box/#api-standards-and-conventions'>API standards and conventions</a>
+  - <a href='http://coachinabox.github.io/coach_in_a_box/#http-responses'>HTTP response codes</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - api_v2
+  - sessions
+  - doc_interface
   - errors
 
 search: true
 ---
 
-# Introduction
+# TwelveShifts v2 API
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+## Introduction
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+This document refers to both actual API endpoints and controller endpoints used by the TwelveShifts v2 application to interact with the outside world.
 
-# Authentication
+Authorization for this API depends on the endpoint used, but it's essentially of two kinds:
 
-> To authorize, use this code:
+- a static string token for endpoints or controller actions that do not have an associated session;
+- a dynamic, expirable JWT token for anything that requires a session.
 
-```ruby
-require 'kittn'
+Birds-eye-view of the typical use-case:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+![Card sort requests](images/api_card_sort.png "Card sort requests image")
 
-```python
-import kittn
+Behind the hood, when a new Card Sort is requested, TSv2 makes an API call to Deck-Of-Cards, in order to
+retrieve all Deck details needed to create the new Card Sort process locally.
 
-api = kittn.authorize('meowmeowmeow')
-```
+The API endpoint used to retrieve the details of the Deck can be configured inside `config/secrets.yml`, together with the value of the _static token_ that has to be used to authorize certain _incoming_ API calls (such as the creation of a new card sort or the renewal of a JWT session), as well as certain _outgoing_ API calls (such as the retrieval of Deck details).
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+Please, refer to the deploy configuration in order to customize these static values for each deploy environment.
+Typically, on `production` these can simply be set by using `ENV` variables.
 
-```javascript
-const kittn = require('kittn');
+---
 
-let api = kittn.authorize('meowmeowmeow');
-```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## Summary:
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+The [`/api/v2`](#group-api-v2) groups all publicly available "external" endpoints, used for interaction with the rest of the system.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+The [`/sessions`](#controller-sessions) controller is the specific entry-point used to create or update an authorized session given a JWT associated to an existing Card sort process.
 
-`Authorization: meowmeowmeow`
+The [`/card_sort`](#controller-card_sort) controller is the typical entrypoint for any ongoing CardSort-JWT session.
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+The [`/doc_interface`](#controller-doc_interface) controller is dedicated to the rendering of HTML partials specifically needed by the Deck-Of-Cards application.
 
-# Kittens
 
-## Get All Kittens
+### Endpoints for group `/api/v2/`
 
-```ruby
-require 'kittn'
+- **GET**  `/api/v2/status` (_no auth_): returns the API 'msg' status and the application 'version' fields.
+- **POST** `/api/v2/card_sort/start` (_static token_): always creates a new card sort for a user, returning a JWT to connect to its endpoints.
+- **POST** `/api/v2/session` (_JWT_): creates a new JWT in order to connect to its endpoints; handy in case of expired JWTs.
+- **POST**  `/api/v2/card_sort/for_user` (_static token_): returns the list of all the existing card sorts for a specified user (`source_id`), with some status data about the ongoing process and a new dynamic JWT token that can be used to connect to this single card sort in the list.
+- **POST**  `/api/v2/card_sort/for_cohort` (_static token_): same as above, but returns the list of all the existing card sorts for a cohort of Pathway IDs (`pathway_ids`).
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
 
-```python
-import kittn
+### Endpoints for controller `/sessions`
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+- **POST** `/sessions/create` (_JWT_): allows to create a new JWT session in order to continue or connect to an existing card sort process, given its associated JWT. The JWT must be valid and not expired.
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
+### Endpoints for controller `/card_sort`
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+- **GET** `/card_sort/continue` (_JWT_): continues or connects to an existing card sort process, given its associated JWT. The JWT must be valid and not expired.
 
-> The above command returns JSON structured like this:
+- **GET** `/card_sort/show` (_JWT_): displays the end result report of a completed Card Sort.
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
+Any GET request may be successful (with no parameters and no headers) if a previous HTTP session has been initiated (and stored/serialized) with a call to `/sessions/create`.
 
-This endpoint retrieves all kittens.
 
-### HTTP Request
+### Endpoints for controller `/doc_interface`
 
-`GET http://example.com/api/kittens`
+- **POST** `/doc_interface/card_layout` (_no auth_): returns the complete rendered HTML partial that can be inserted anywhere to display a single Card, by specifying the card contents as data payload of the request. (Restrictions may apply.)
 
-### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+---
