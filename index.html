@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>TwelveShifts v2 API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,8 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
@@ -222,22 +220,60 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#twelveshifts-v2-api" class="toc-h1 toc-link" data-title="TwelveShifts v2 API">TwelveShifts v2 API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#summary" class="toc-h2 toc-link" data-title="Summary:">Summary:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#group-api-v2" class="toc-h1 toc-link" data-title="Group /api/v2/">Group <strong><code>/api/v2/</code></strong></a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-current-api-status-api-v2-status" class="toc-h2 toc-link" data-title="GET current API status (/api/v2/status)"><strong><code>GET</code></strong> current API status (<code>/api/v2/status</code>)</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#post-new-cardsort-start-api-v2-card_sort-start" class="toc-h2 toc-link" data-title="POST new CardSort start (/api/v2/card_sort/start)"><strong><code>POST</code></strong> new CardSort start (<code>/api/v2/card_sort/start</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#post-create-or-renew-jwt-session-api-v2-session" class="toc-h2 toc-link" data-title="POST create or renew JWT session (/api/v2/session)"><strong><code>POST</code></strong> create or renew JWT session (<code>/api/v2/session</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#post-list-cardsorts-for-a-user-api-v2-card_sort-for_user" class="toc-h2 toc-link" data-title="POST list CardSorts for a user (/api/v2/card_sort/for_user)"><strong><code>POST</code></strong> list CardSorts for a user (<code>/api/v2/card_sort/for_user</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#post-list-cardsorts-for-a-cohort-of-pathways-api-v2-card_sort-for_cohort" class="toc-h2 toc-link" data-title="POST list CardSorts for a cohort of Pathways (/api/v2/card_sort/for_cohort)"><strong><code>POST</code></strong> list CardSorts for a cohort of Pathways (<code>/api/v2/card_sort/for_cohort</code>)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#controller-sessions" class="toc-h1 toc-link" data-title="Controller /sessions">Controller <strong><code>/sessions</code></strong></a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-new-http-session-creation-sessions-create" class="toc-h2 toc-link" data-title="POST new HTTP Session creation (/sessions/create)"><strong><code>POST</code></strong> new HTTP Session creation (<code>/sessions/create</code>)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#controller-card_sort" class="toc-h1 toc-link" data-title="Controller /card_sort">Controller <strong><code>/card_sort</code></strong></a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-connect-to-an-existing-card-sort-card_sort-continue" class="toc-h2 toc-link" data-title="GET connect to an existing Card Sort (/card_sort/continue)"><strong><code>GET</code></strong> connect to an existing Card Sort (<code>/card_sort/continue</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#get-display-completed-card-sort-results-card_sort-show" class="toc-h2 toc-link" data-title="GET display completed Card Sort results (/card_sort/show)"><strong><code>GET</code></strong> display completed Card Sort results (<code>/card_sort/show</code>)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#controller-doc_interface" class="toc-h1 toc-link" data-title="Controller /doc_interface">Controller <strong><code>/doc_interface</code></strong></a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-render-card-layout-partial-doc_interface-card_layout" class="toc-h2 toc-link" data-title="POST render card layout partial (/doc_interface/card_layout)"><strong><code>POST</code></strong> render card layout partial (<code>/doc_interface/card_layout</code>)</a>
                   </li>
               </ul>
           </li>
@@ -246,198 +282,764 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='http://coachinabox.github.io/coach_in_a_box/mother'>'MOTHER' API</a></li>
+            <li><a href='http://coachinabox.github.io/coach_in_a_box/doc#deck-of-cards-api'>Deck of Cards API</a></li>
+            <li><a href='http://coachinabox.github.io/coach_in_a_box/#api-standards-and-conventions'>API standards and conventions</a></li>
+            <li><a href='http://coachinabox.github.io/coach_in_a_box/#http-responses'>HTTP response codes</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='twelveshifts-v2-api'>TwelveShifts v2 API</h1><h2 id='introduction'>Introduction</h2>
+<p>This document refers to both actual API endpoints and controller endpoints used by the TwelveShifts v2 application to interact with the outside world.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Authorization for this API depends on the endpoint used, but it&#39;s essentially of two kinds:</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<ul>
+<li>a static string token for endpoints or controller actions that do not have an associated session;</li>
+<li>a dynamic, expirable JWT token for anything that requires a session.</li>
+</ul>
+
+<p>Birds-eye-view of the typical use-case:</p>
+
+<p><img src="images/api_card_sort.png" title="Card sort requests image" alt="Card sort requests" /></p>
+
+<p>Behind the hood, when a new Card Sort is requested, TSv2 makes an API call to Deck-Of-Cards, in order to
+retrieve all Deck details needed to create the new Card Sort process locally.</p>
+
+<p>The API endpoint used to retrieve the details of the Deck can be configured inside <code>config/secrets.yml</code>, together with the value of the <em>static token</em> that has to be used to authorize certain <em>incoming</em> API calls (such as the creation of a new card sort or the renewal of a JWT session), as well as certain <em>outgoing</em> API calls (such as the retrieval of Deck details).</p>
+
+<p>Please, refer to the deploy configuration in order to customize these static values for each deploy environment.
+Typically, on <code>production</code> these can simply be set by using <code>ENV</code> variables.</p>
+
+<hr>
+<h2 id='summary'>Summary:</h2>
+<p>The <a href="#group-api-v2"><code>/api/v2</code></a> groups all publicly available &quot;external&quot; endpoints, used for interaction with the rest of the system.</p>
+
+<p>The <a href="#controller-sessions"><code>/sessions</code></a> controller is the specific entry-point used to create or update an authorized session given a JWT associated to an existing Card sort process.</p>
+
+<p>The <a href="#controller-card_sort"><code>/card_sort</code></a> controller is the typical entrypoint for any ongoing CardSort-JWT session.</p>
+
+<p>The <a href="#controller-doc_interface"><code>/doc_interface</code></a> controller is dedicated to the rendering of HTML partials specifically needed by the Deck-Of-Cards application.</p>
+<h3 id='endpoints-for-group-api-v2'>Endpoints for group <code>/api/v2/</code></h3>
+<ul>
+<li><strong>GET</strong>  <code>/api/v2/status</code> (<em>no auth</em>): returns the API &#39;msg&#39; status and the application &#39;version&#39; fields.</li>
+<li><strong>POST</strong> <code>/api/v2/card_sort/start</code> (<em>static token</em>): always creates a new card sort for a user, returning a JWT to connect to its endpoints.</li>
+<li><strong>POST</strong> <code>/api/v2/session</code> (<em>JWT</em>): creates a new JWT in order to connect to its endpoints; handy in case of expired JWTs.</li>
+<li><strong>POST</strong>  <code>/api/v2/card_sort/for_user</code> (<em>static token</em>): returns the list of all the existing card sorts for a specified user (<code>source_id</code>), with some status data about the ongoing process and a new dynamic JWT token that can be used to connect to this single card sort in the list.</li>
+<li><strong>POST</strong>  <code>/api/v2/card_sort/for_cohort</code> (<em>static token</em>): same as above, but returns the list of all the existing card sorts for a cohort of Pathway IDs (<code>pathway_ids</code>).</li>
+</ul>
+<h3 id='endpoints-for-controller-sessions'>Endpoints for controller <code>/sessions</code></h3>
+<ul>
+<li><strong>POST</strong> <code>/sessions/create</code> (<em>JWT</em>): allows to create a new JWT session in order to continue or connect to an existing card sort process, given its associated JWT. The JWT must be valid and not expired.</li>
+</ul>
+<h3 id='endpoints-for-controller-card_sort'>Endpoints for controller <code>/card_sort</code></h3>
+<ul>
+<li><p><strong>GET</strong> <code>/card_sort/continue</code> (<em>JWT</em>): continues or connects to an existing card sort process, given its associated JWT. The JWT must be valid and not expired.</p></li>
+<li><p><strong>GET</strong> <code>/card_sort/show</code> (<em>JWT</em>): displays the end result report of a completed Card Sort.</p></li>
+</ul>
+
+<p>Any GET request may be successful (with no parameters and no headers) if a previous HTTP session has been initiated (and stored/serialized) with a call to <code>/sessions/create</code>.</p>
+<h3 id='endpoints-for-controller-doc_interface'>Endpoints for controller <code>/doc_interface</code></h3>
+<ul>
+<li><strong>POST</strong> <code>/doc_interface/card_layout</code> (<em>no auth</em>): returns the complete rendered HTML partial that can be inserted anywhere to display a single Card, by specifying the card contents as data payload of the request. (Restrictions may apply.)</li>
+</ul>
+
+<hr>
+<h1 id='group-api-v2'>Group <strong><code>/api/v2/</code></strong></h1><h2 id='get-current-api-status-api-v2-status'><strong><code>GET</code></strong> current API status (<code>/api/v2/status</code>)</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Sample call:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Accept: application/json"</span> -i &lt;TSv2_API_HOST&gt;/api/v2/status
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/status"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"get"</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">version</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Response (200, &#39;application/json&#39;):</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ok: reachable and running"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<p>Retrieves the API server endpoint status.
+No parameters or authorization are required.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<p><code>GET &lt;TSv2_API_HOST&gt;/api/v2/status</code></p>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<hr>
+<h2 id='post-new-cardsort-start-api-v2-card_sort-start'><strong><code>POST</code></strong> new CardSort start (<code>/api/v2/card_sort/start</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -i &lt;TSv2_API_HOST&gt;/api/v2/card_sort/start <span class="se">\</span>
+     --data <span class="s1">'source_id=1&amp;deck=1&amp;brand=1&amp;source=sort1&amp;pathway_id=1&amp;token=STATIC_AUTH_TOKEN'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/card_sort/start"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">source_id</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span>
+    <span class="na">deck</span><span class="p">:</span>       <span class="mi">1</span><span class="p">,</span>
+    <span class="na">brand</span><span class="p">:</span>      <span class="mi">1</span><span class="p">,</span>
+    <span class="na">source</span><span class="p">:</span>     <span class="s1">'sort1'</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span>      <span class="nx">STATIC_AUTH_TOKEN</span>
+  <span class="p">},</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">jwt</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response (200, &#39;application/json&#39;):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jwt"</span><span class="p">:</span><span class="w"> </span><span class="err">JWT_TEXT_TOKEN</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>Creates a new CardSort given the parameters.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>The <code>STATIC_AUTH_TOKEN</code> can be customized by editing the <code>config/secrets.yml</code> file or by setting a dedicated <code>ENV</code> variable upon each deploy</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/api/v2/card_sort/start</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td style="text-align: left"><code>source_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">CiaB&#39;s Source/User ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>deck</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">CiaB&#39;s Deck ID; This will be used also to retrieve the deck details internally with a call to DoC API</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>brand</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">CiaB&#39;s Brand ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>token</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">static auth token string (typically set by deploy config)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>source</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">-</td>
+<td style="text-align: left">CiaB&#39;s source or Card Sort name; when not given, a card sort name will be generated using the specified source, deck &amp; brand IDs</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pathway_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">-</td>
+<td style="text-align: left">CiaB&#39;s pathway ID</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<hr>
+<h2 id='post-create-or-renew-jwt-session-api-v2-session'><strong><code>POST</code></strong> create or renew JWT session (<code>/api/v2/session</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -i &lt;TSv2_API_HOST&gt;/api/v2/session <span class="se">\</span>
+     --data <span class="s1">'source_id=1&amp;card_sort=1&amp;token=STATIC_AUTH_TOKEN'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/session"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">source_id</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span>
+    <span class="na">card_sort</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span>      <span class="nx">STATIC_AUTH_TOKEN</span>
+  <span class="p">},</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">jwt</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response (200, &#39;application/json&#39;):</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jwt"</span><span class="p">:</span><span class="w"> </span><span class="err">JWT_TEXT_TOKEN</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
+<p>Allows to re-create or renew a JWT given a <code>source_id</code> and a TSv2 <code>card_sort</code> ID, that can be extracted by decoding the JWT from a previous session or by choosing one from the reported list of existing card sorts.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/api/v2/session</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: left"><em>Description</em></th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td style="text-align: left"><code>source_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: left">CiaB&#39;s Source/User ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>card_sort</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: left">TwelveShifts V2 internal Card Sort ID; can be extracted by decoding the JWT or by requesting a list of all the available card sorts</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>token</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: left">static auth token string (typically set by deploy config)</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<hr>
+<h2 id='post-list-cardsorts-for-a-user-api-v2-card_sort-for_user'><strong><code>POST</code></strong> list CardSorts for a user (<code>/api/v2/card_sort/for_user</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -i &lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_user <span class="se">\</span>
+     --data <span class="s1">'source_id=1&amp;source_type=CiaB&amp;pathway_id=1&amp;token=STATIC_AUTH_TOKEN'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_user"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">source_id</span><span class="p">:</span>    <span class="mi">1</span><span class="p">,</span>
+    <span class="na">source_type</span><span class="p">:</span>  <span class="s1">'CiaB'</span><span class="p">,</span>
+    <span class="na">pathway_id</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span>        <span class="nx">STATIC_AUTH_TOKEN</span>
+  <span class="p">},</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+    <span class="c1">// Array of JSON Objects:</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">card_sorts</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Response (200, &#39;application/json&#39;)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful. Card sorts found: 1."</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"card_sorts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w">                   </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w">                 </span><span class="s2">"card sort name"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"deck_id"</span><span class="p">:</span><span class="w">              </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"current_stage_id"</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"phase_num"</span><span class="p">:</span><span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"current_position"</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w">           </span><span class="s2">"2018-11-18 11:30"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w">           </span><span class="s2">"2018-11-18 11:30"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w">            </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w">             </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"deck_name"</span><span class="p">:</span><span class="w">            </span><span class="s2">"deck.name"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"brand_name"</span><span class="p">:</span><span class="w">           </span><span class="s2">"brand.name"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_intro_shown"</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pile_changes_phase1"</span><span class="p">:</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pile_changes_phase2"</span><span class="p">:</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pile_changes_phase3"</span><span class="p">:</span><span class="w">  </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"jwt"</span><span class="p">:</span><span class="w">                  </span><span class="err">JWT_TEXT_TOKEN</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns the list of all the existing card sorts for a specified user (<code>source_id</code>), with several data fields for each card sort, as well as a new dynamic JWT token for each one that can be used to connect to its specific card sort process.
+It&#39;s also possible to specify an additional Pathway ID parameter (optional), in order to better filter out the required results.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_user</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>source_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">CiaB&#39;s Source/User ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>source_type</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">CiaB&#39;s Source type</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>token</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">static auth token string (typically set by deploy config)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pathway_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">-</td>
+<td style="text-align: left">CiaB&#39;s pathway ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields'>Response fields</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">CardSort instance ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>name</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CardSort name</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>deck_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">TSv2 internal Deck ID (not CiaB&#39;s)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>current_stage_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">fine-grained internal stages (~0..6)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>phase_num</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">phase or &quot;logic stage&quot; number; 0 (not-yet-started) .. 3 (end phase)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>current_position</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">currently browsed pile or position; 0 (unsorted) .. 3 (top pile)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>created_at</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">creation timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>updated_at</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">latest update timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>source_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">CiaB user ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>brand_id</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">CiaB brand ID</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>deck_name</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CiaB Deck name</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>brand_name</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CiaB Brand name</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>last_intro_shown</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">last intro screen shown (0: none, 1: phase 1, 2: phase 2, &gt;2: done)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pile_changes_phase1</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">tot. pile revisions made in phase #1</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pile_changes_phase2</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">tot. pile revisions made in phase #2</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pile_changes_phase3</code></td>
+<td style="text-align: center">Integer</td>
+<td style="text-align: center">tot. pile revisions made in phase #3</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>jwt</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">fine-grained internal stages (~0..6)</td>
+</tr>
+</tbody></table>
+
+<hr>
+<h2 id='post-list-cardsorts-for-a-cohort-of-pathways-api-v2-card_sort-for_cohort'><strong><code>POST</code></strong> list CardSorts for a cohort of Pathways (<code>/api/v2/card_sort/for_cohort</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -i &lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_cohort <span class="se">\</span>
+     --data <span class="s1">'pathway_ids=1%2C2%2C5%2C7&amp;token=STATIC_AUTH_TOKEN'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_user"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">pathway_ids</span><span class="p">:</span>  <span class="s1">'1,2,5,7'</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span>        <span class="nx">STATIC_AUTH_TOKEN</span>
+  <span class="p">},</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+    <span class="c1">// Array of JSON Objects:</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">card_sorts</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Response (200, &#39;application/json&#39;)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful. Card sorts found: 4."</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"card_sorts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(...same array of JSON objects as before...)"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Same as <code>/api/v2/card_sort/for_user</code> endpoint, but returns the list of all the existing card sorts for a cohort of Pathway IDs (<code>pathway_ids</code>), returning a JSON response identical in structure but simply filtered on a different data set.</p>
+
+<p>In case no CardSort matching the specified Pathway IDs will be found, an <code>error</code> JSON field will be returned.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/api/v2/card_sort/for_cohort</code></p>
+<h3 id='body-parameters-4'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>pathway_ids</code></td>
+<td style="text-align: center">String/list</td>
+<td style="text-align: left">A comma-separated list of CiaB&#39;s Pathway IDs (E.g.: &quot;1,2,5,7&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>token</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: left">static auth token string (typically set by deploy config)</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-2'>Response fields</h3>
+<p>See the <code>/api/v2/card_sort/for_user</code> example.</p>
+
+<hr>
+<h1 id='controller-sessions'>Controller <strong><code>/sessions</code></strong></h1><h2 id='post-new-http-session-creation-sessions-create'><strong><code>POST</code></strong> new HTTP Session creation (<code>/sessions/create</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --include --request POST --data<span class="o">=</span><span class="s2">"{'t': JWT_TEXT_TOKEN}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/sessions/create"</span>
+
+<span class="c"># Alternatively:</span>
+curl --include --request POST  <span class="se">\</span>
+     -H <span class="s2">"{'Authorization': 'Bearer JWT_TEXT_TOKEN'}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/sessions/create"</span>
+</code></pre>
+<blockquote>
+<p>Response (301, &#39;text/html&#39;)
+Location will be redirected to the actual endpoint upon success.</p>
+</blockquote>
+
+<p>Starts (or continues) a new HTTP session authorized by a dynamic JWT associated to a specific CardSort.</p>
+
+<p>The <code>sessions</code> controller will redirect to the correct endpoint if the JWT is accepted, or it will redirect to an error page otherwise.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/sessions/create</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>t</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">JWT text token; its payload must contain the field <code>card_sort</code> pointing to an existing TSv2 CardSort ID</td>
+</tr>
+</tbody></table>
+
+<p>The JWT text token can also be specified as a &quot;Authorization&quot; <code>Bearer</code>-type of header in the request (instead of using it as the <code>t</code> request payload).</p>
+
+<hr>
+<h1 id='controller-card_sort'>Controller <strong><code>/card_sort</code></strong></h1><h2 id='get-connect-to-an-existing-card-sort-card_sort-continue'><strong><code>GET</code></strong> connect to an existing Card Sort (<code>/card_sort/continue</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --include --data<span class="o">=</span><span class="s2">"{'t': JWT_TEXT_TOKEN}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/card_sort/continue"</span>
+
+<span class="c"># Alternatively:</span>
+curl --include -H <span class="s2">"{'Authorization': 'Bearer JWT_TEXT_TOKEN'}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/card_sort/continue"</span>
+</code></pre>
+<blockquote>
+<p>Response (301, &#39;text/html&#39;)
+Location will be redirected to the actual endpoint upon success.</p>
+</blockquote>
+
+<p>Continues (connects to) an existing card sort process, given its associated JWT.</p>
+
+<p>The <code>card_sort</code> controller will redirect to the correct endpoint if the JWT is accepted, or it will redirect to an error page otherwise.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET &lt;TSv2_API_HOST&gt;/card_sort/continue</code></p>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>t</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">JWT text token; its payload must contain the field <code>card_sort</code> pointing to an existing TSv2 CardSort ID</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The JWT text token can also be specified as an "Authorization" <code>Bearer</code>-type of header in the request (instead of using it as the <code>t</code> request payload).
+</aside>
+<h2 id='get-display-completed-card-sort-results-card_sort-show'><strong><code>GET</code></strong> display completed Card Sort results (<code>/card_sort/show</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --include --data<span class="o">=</span><span class="s2">"{'t': JWT_TEXT_TOKEN}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/card_sort/show"</span>
+
+<span class="c"># Alternatively:</span>
+curl --include -H <span class="s2">"{'Authorization': 'Bearer JWT_TEXT_TOKEN'}"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/card_sort/show"</span>
+</code></pre>
+<blockquote>
+<p>Response (301, &#39;text/html&#39;)
+Location will be redirected to the actual endpoint upon success.</p>
+</blockquote>
+
+<p>Displays the end result report of a completed Card Sort, given its associated JWT.
+The Card Sort must be actually completed in order to have data to be displayed.</p>
+
+<p>The <code>card_sort</code> controller will redirect to the correct endpoint if the JWT is accepted, or it will redirect to an error page otherwise.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET &lt;TSv2_API_HOST&gt;/card_sort/show</code></p>
+<h3 id='body-parameters-3'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>t</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">JWT text token; its payload must contain the field <code>card_sort</code> pointing to an existing TSv2 CardSort ID</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The JWT text token can also be specified as an "Authorization" <code>Bearer</code>-type of header in the request (instead of using it as the <code>t</code> request payload).
+</aside>
+<h1 id='controller-doc_interface'>Controller <strong><code>/doc_interface</code></strong></h1><h2 id='post-render-card-layout-partial-doc_interface-card_layout'><strong><code>POST</code></strong> render card layout partial (<code>/doc_interface/card_layout</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --include --request POST --data<span class="o">=</span><span class="s2">"JSON_DECK_DATA_STRUCTURE"</span> <span class="se">\</span>
+     <span class="s2">"&lt;TSv2_API_HOST&gt;/sessions/create"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// Call Rails endpoint via AJAX to apply current card layout to JSON data:</span>
+<span class="kd">function</span> <span class="nx">ajaxTestDoCInterfaceCardLayout</span><span class="p">(</span> <span class="nx">jsonDeckData</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/doc_interface/card_layout"</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">jsonDeckData</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"/doc_interface/card_layout call ok."</span><span class="p">);</span>
+      <span class="c1">// Display resulting partial:</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#wherever-you-wanna-put-the-result-into'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span> <span class="nx">result</span> <span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"/doc_interface/card_layout response error!"</span><span class="p">);</span>
+      <span class="c1">// Clear the partial in case of error:</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#wherever-you-wanna-put-the-result-into'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s2">"html"</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+<span class="c1">//--------------------------------------------------------------------</span>
+</code></pre>
+<blockquote>
+<p>Response (200, &#39;text/html&#39;):</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;p&gt;</span>
+  This is a placeholder for what will be an <span class="nt">&lt;code&gt;</span>HTML snippet<span class="nt">&lt;/code&gt;</span>
+  obtained from rendering the current <span class="nt">&lt;b&gt;</span>card layout<span class="nt">&lt;/b&gt;</span>, filled-in with
+  the details of the JSON deck data payload.<span class="nt">&lt;br/&gt;</span>
+  This HTML partial can be easily <span class="nt">&lt;i&gt;</span>included directly on a DIV inside a page<span class="nt">&lt;/i&gt;</span>,
+  or wrapped in another container in order to be displayed.<span class="nt">&lt;br/&gt;</span>
+  (The actual HTML resulting code is not included here since it's too long and complex.)
+<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+<p>Retrieves the rendered HTML partial that can be used to display a single Card with its contents.</p>
+
+<p>The resulting Card &quot;widget&quot; is somehow simplified (and possibly optimized in its usage of the CSS styles).
+It won&#39;t have the highlighting feature incorporated, but it&#39;ll include the Javascript code for flipping on its sides.</p>
+
+<p>For this reason, the resulting text should always be <em>evalutated</em> for Javascript code by the callback on a successful retrieval, in order for the flip button to work.</p>
+
+<p>Currently this resource works only via XHR (AJAX) POST request, with no authentication checks.</p>
+
+<p>Future versions may introduce a static token or a session authorization.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST &lt;TSv2_API_HOST&gt;/doc_interface/card_layout</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<blockquote>
+<p>Example dataset valid for both the <em>data payload</em> of the Body parameter, or as object value of <code>jsonDeckData</code> in the Javascript example above:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Twelve Shifts"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"supportedLanguages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"frontHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some/upload/url/to_an_asset1.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"backHeader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some/upload/url/to_an_asset2.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"clientLogoOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some/upload/url/to_an_asset3.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"clientLogoTwo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some/upload/url/to_an_asset4.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vertical"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customCss"</span><span class="p">:</span><span class="w"> </span><span class="s2">".custom_card_title {</span><span class="se">\n</span><span class="s2">  color: #28324b;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">.custom_card_text {</span><span class="se">\n</span><span class="s2">  color: #28324b;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">.custom_card_body {</span><span class="se">\n</span><span class="s2">  background-color: #ffffff;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">.custom_card_header {</span><span class="se">\n</span><span class="s2">  color: #fb054b;</span><span class="se">\n</span><span class="s2">  background-color: #afafaf;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">.custom_sort_button {</span><span class="se">\n</span><span class="s2">  color: #ffffff;</span><span class="se">\n</span><span class="s2">  background-color: #fb054b;</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"frontTitleOne"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development FR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"frontTitleTwo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Challenge"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Challenge FR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"backTitle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TBC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TBC FR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"welcomeText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Welcome&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This card sort is a process which will provide you and your Coach with some insight into your strengths and development areas.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This card sort process will take you 20 to 30 minutes to complete.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Welcome FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This card sort is a process which will provide you and your Coach with some insight into your strengths and development areas.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This card sort process will take you 20 to 30 minutes to complete.&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"strengthPreText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Strength Sort&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;The first stage of this process is to identify your strengths.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You will now be presented with a series of cards. Please read each card and, without too much thought, sort the cards into one of three piles: Strengths, Development Areas and those which are neither a clear strength nor development area.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Once you have sorted all cards, you should have three roughly equal piles of cards.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Strength Sort FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;The first stage of this process is to identify your strengths.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You will now be presented with a series of cards. Please read each card and, without too much thought, sort the cards into one of three piles: Strengths, Development Areas and those which are neither a clear strength nor development area.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Once you have sorted all cards, you should have three roughly equal piles of cards.&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"strengthPostText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Strengths Sort Complete?&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You have now identified your strengths.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You can review each pile of cards by clicking on the box on the left hand side and scrolling through the cards.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;If you change your mind and want to move a card to a different pile, just click on the relevant sort button underneath.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Once you are happy with the sort you have completed, please click the button to go to Stage 2.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Strengths Sort Complete? FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You have now identified your strengths.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You can review each pile of cards by clicking on the box on the left hand side and scrolling through the cards.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;If you change your mind and want to move a card to a different pile, just click on the relevant sort button underneath.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Once you are happy with the sort you have completed, please click the button to go to Stage 2.&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"contextPreText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Context Sort&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Now that you have identified your strengths, we have put these cards to one side (virtually) and we would now like you to carry out a second sort on the remaining cards.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This time, you are sorting the cards into three piles according to the importance of that card to you at the moment.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Context Sort FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Now that you have identified your strengths, we have put these cards to one side (virtually) and we would now like you to carry out a second sort on the remaining cards.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;This time, you are sorting the cards into three piles according to the importance of that card to you at the moment.&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"contextPostText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Context Sort Complete?&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You have now sorted the remaining cards according to their importance to you.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You can review each pile of cards by clicking on the box on the left-hand side.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Your coach will discuss these results with you during your next coaching session.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Context Sort Complete? FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You have now sorted the remaining cards according to their importance to you.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;You can review each pile of cards by clicking on the box on the left-hand side.&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;Your coach will discuss these results with you during your next coaching session.&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"resultText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Results&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;TBD&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Results FR&lt;/h1&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p&gt;TBD&lt;/p&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Influencing others"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ordinal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Relate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="s2">"frontTextOne"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flexing my approach to find the right way to influence and motivate different people"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"frontTextTwo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There is a particular individual or group of individuals that I find it hard to get through to"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"backText"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The JSON deck data (<code>jsonDeckData</code> in the Javascript example) that has to be used to populate the resulting card layout, has to be sent with the request itself as the full body of POST payload data.</p>
+
+<p>Its format is the one defined by the DeckOfCards API.
+(Current schema at: <a href="http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck">CiaB API call for GET deck_details</a>)</p>
+<h1 id='errors'>Errors</h1>
+<p>Main error codes returned:</p>
 
 <table><thead>
 <tr>
@@ -447,47 +1049,23 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request -- Invalid request, wrong parameters or invalid values specified.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Unauthorized -- STATIC_AUTH_TOKEN or JWT wrong or expired.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- Endpoint or resource not found or unsupported.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>415</td>
+<td>Unsupported Media Type -- Wrong type of accepted request.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Internal Server Error -- Error during entity creation or retrieval; check the log files.</td>
 </tr>
 </tbody></table>
 
@@ -495,8 +1073,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
