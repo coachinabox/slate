@@ -677,6 +677,11 @@ It&#39;s also possible to specify an additional Pathway ID parameter (optional),
 <td style="text-align: center">CiaB user ID</td>
 </tr>
 <tr>
+<td style="text-align: left"><code>source</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CiaB source</td>
+</tr>
+<tr>
 <td style="text-align: left"><code>brand_id</code></td>
 <td style="text-align: center">Integer</td>
 <td style="text-align: center">CiaB brand ID</td>
@@ -715,6 +720,111 @@ It&#39;s also possible to specify an additional Pathway ID parameter (optional),
 <td style="text-align: left"><code>jwt</code></td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">fine-grained internal stages (~0..6)</td>
+</tr>
+</tbody></table>
+<h4 id='possible-values-for-phase_num'>Possible values for <code>phase_num</code></h4>
+<p>These are high-level states that reflect the main Business-Logic of the Application.
+The term &quot;phase&quot; in the source code always refers to these high-level states. Seldom the term &quot;step&quot; is used as a synonym.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center"><code>phase_num</code></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">0</td>
+<td style="text-align: left">card sort not started yet</td>
+</tr>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: left">Business-Logic phase #1 (default name: &quot;Strengths Sort&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: left">Business-Logic phase #2 (default name: &quot;Context Sort&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: center">3</td>
+<td style="text-align: left">Business-Logic phase #3 (default name: &quot;Results&quot; or &quot;Highlighting stage&quot;)</td>
+</tr>
+</tbody></table>
+<h4 id='possible-values-for-current_stage_id'>Possible values for <code>current_stage_id</code></h4>
+<p>These are more fine-grained internal logic states.
+The term &quot;stage&quot; in the source code always refers to these low-level states.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center"><code>current_stage_id</code></th>
+<th style="text-align: left"><em>Internal constant</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">0</td>
+<td style="text-align: left"><code>STAGE_BEGIN</code></td>
+<td style="text-align: left">Initial stage code for a freshly created CardSort process (not-yet started)</td>
+</tr>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: left"><code>STAGE_1</code></td>
+<td style="text-align: left">Stage 1 ends when all the cards have an assigned kind &quot;strength&quot; (that is: they have been processed at least once)</td>
+</tr>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: left"><code>STAGE_1_END</code></td>
+<td style="text-align: left">Review of Stage 1 ends when the user clicks on the &quot;go to the next stage&quot; button</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: left"><code>STAGE_2</code></td>
+<td style="text-align: left">Stage 2 ends when all the cards have been processed at least once</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: left"><code>STAGE_2_END</code></td>
+<td style="text-align: left">&#39;Review&#39; of Stage 2 ends when the user clicks on the &quot;go to the next stage&quot; button</td>
+</tr>
+<tr>
+<td style="text-align: center">3</td>
+<td style="text-align: left"><code>STAGE_3</code></td>
+<td style="text-align: left">Stage 3 ends when all the cards have been processed at least once</td>
+</tr>
+<tr>
+<td style="text-align: center">3</td>
+<td style="text-align: left"><code>STAGE_3_END</code></td>
+<td style="text-align: left">final stage code for a completed CardSort process (Logic state currently <em>NOT USED</em>)</td>
+</tr>
+</tbody></table>
+<h4 id='possible-values-for-current_position'>Possible values for <code>current_position</code></h4>
+<p>Each stage has 4 possible &quot;piles&quot;/destination positions for each card. The terms &quot;pile&quot; and &quot;position&quot; are used interchangeably throughout all the source code.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center"><code>current_position</code></th>
+<th style="text-align: left"><em>Internal constant</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">0</td>
+<td style="text-align: left"><code>POS_UNSORTED</code></td>
+<td style="text-align: left">Unsorted Pile/Position (depending on phase: &quot;Unsorted&quot;, &quot;Unprioritized&quot; or &quot;Highlighted&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: left"><code>POS_TOP</code></td>
+<td style="text-align: left">Top Pile/Position (depending on phase: &quot;Strengths&quot;, &quot;Important&quot; or &quot;Shifts&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: left"><code>POS_MIDDLE</code></td>
+<td style="text-align: left">Middle Pile/Position (depending on phase: &quot;Neither&quot;, &quot;Less important&quot; or &quot;Strengths&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: center">3</td>
+<td style="text-align: left"><code>POS_BOTTOM</code></td>
+<td style="text-align: left">Bottom Pile/Position (depending on phase: &quot;Dev. Area&quot;, &quot;Unimportant&quot; or &quot;Others&quot;)</td>
 </tr>
 </tbody></table>
 
