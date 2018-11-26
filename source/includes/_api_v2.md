@@ -261,6 +261,7 @@ It's also possible to specify an additional Pathway ID parameter (optional), in 
 | `created_at` | Integer | creation timestamp |
 | `updated_at` | Integer | latest update timestamp |
 | `source_id` | Integer | CiaB user ID |
+| `source` | String | CiaB source |
 | `brand_id` | Integer | CiaB brand ID |
 | `deck_name` | String | CiaB Deck name |
 | `brand_name` | String | CiaB Brand name |
@@ -269,6 +270,47 @@ It's also possible to specify an additional Pathway ID parameter (optional), in 
 | `pile_changes_phase2` | Integer | tot. pile revisions made in phase #2 |
 | `pile_changes_phase3` | Integer | tot. pile revisions made in phase #3 |
 | `jwt` | String | fine-grained internal stages (~0..6) |
+
+
+#### Possible values for `phase_num`
+
+These are high-level states that reflect the main Business-Logic of the Application.
+The term "phase" in the source code always refers to these high-level states. Seldom the term "step" is used as a synonym.
+
+| `phase_num` | _Description_ |
+| :---: | :--- |
+| 0 | card sort not started yet |
+| 1 | Business-Logic phase #1 (default name: "Strengths Sort") |
+| 2 | Business-Logic phase #2 (default name: "Context Sort") |
+| 3 | Business-Logic phase #3 (default name: "Results" or "Highlighting stage") |
+
+
+#### Possible values for `current_stage_id`
+
+These are more fine-grained internal logic states.
+The term "stage" in the source code always refers to these low-level states.
+
+| `current_stage_id` | _Internal constant_ | _Description_ |
+| :---: | :--- | :--- |
+| 0 | `STAGE_BEGIN` | Initial stage code for a freshly created CardSort process (not-yet started) |
+| 1 | `STAGE_1` | Stage 1 ends when all the cards have an assigned kind "strength" (that is: they have been processed at least once) |
+| 1 | `STAGE_1_END` | Review of Stage 1 ends when the user clicks on the "go to the next stage" button |
+| 2 | `STAGE_2` | Stage 2 ends when all the cards have been processed at least once |
+| 2 | `STAGE_2_END` | 'Review' of Stage 2 ends when the user clicks on the "go to the next stage" button |
+| 3 | `STAGE_3` | Stage 3 ends when all the cards have been processed at least once |
+| 3 | `STAGE_3_END` | final stage code for a completed CardSort process (Logic state currently _NOT USED_) |
+
+
+#### Possible values for `current_position`
+
+Each stage has 4 possible "piles"/destination positions for each card. The terms "pile" and "position" are used interchangeably throughout all the source code.
+
+| `current_position` | _Internal constant_ | _Description_ |
+| :---: | :--- | :--- |
+| 0 | `POS_UNSORTED` | Unsorted Pile/Position (depending on phase: "Unsorted", "Unprioritized" or "Highlighted") |
+| 1 | `POS_TOP` | Top Pile/Position (depending on phase: "Strengths", "Important" or "Shifts") |
+| 2 | `POS_MIDDLE` | Middle Pile/Position (depending on phase: "Neither", "Less important" or "Strengths") |
+| 3 | `POS_BOTTOM` | Bottom Pile/Position (depending on phase: "Dev. Area", "Unimportant" or "Others") |
 
 
 ---
