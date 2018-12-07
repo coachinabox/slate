@@ -1057,10 +1057,14 @@ The JWT text token can also be specified as an "Authorization" <code>Bearer</cod
 <p>Retrieves the rendered HTML partial that can be used to display a single Card with its contents.</p>
 
 <p>The resulting Card &quot;widget&quot; is somehow simplified (and possibly optimized in its usage of the CSS styles).
-It won&#39;t have the highlighting feature incorporated, but it&#39;ll include the Javascript code for flipping on its sides.</p>
+It won&#39;t have the highlighting button or the flip button features incorporated, but it&#39;ll embed the CSS code for flipping on its sides.</p>
 
-<p>For this reason, the resulting text should always be <em>evalutated</em> for Javascript code by the callback on a successful retrieval, in order for the flip button to work.</p>
-
+<p>To flip or display the card on the <strong>front side</strong>, execute the following Javascript code:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s2">"rotateY(0deg)"</span><span class="p">});</span>
+</code></pre>
+<p>To make it flip or display its <strong>back side</strong>, execute this instead:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s2">"rotateY(180deg)"</span><span class="p">});</span>
+</code></pre>
 <p>Currently this resource works only via XHR (AJAX) POST request, with no authentication checks.</p>
 
 <p>Future versions may introduce a static token or a session authorization.</p>
@@ -1148,7 +1152,83 @@ It won&#39;t have the highlighting feature incorporated, but it&#39;ll include t
 
 <p>Its format is the one defined by the DeckOfCards API.
 (Current schema at: <a href="http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck">CiaB API call for GET deck_details</a>)</p>
-<h1 id='errors'>Errors</h1>
+<h3 id='the-quot-minimalist-quot-local-html-test-page'>The &quot;minimalist&quot;, local HTML test page</h3>
+<p>In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it&#39;s possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.</p>
+
+<p>Create somewhere a <code>test.html</code> page with the code below, and include in the same directory a copy of <code>jquery.js</code>, vers. 1.12 or above, in either standard or minified form (it doesn&#39;t matter).</p>
+
+<p>Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying &amp; pasting the avove sample), and then issuing the request by pressing the &#39;submit request&#39; button.</p>
+
+<p>The current response should weight around 11.9K, with an average timing of 800 msec.</p>
+<pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, shrink-to-fit=no"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Twelveshifts Deck layout retrieval test"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"Steve Alloro, BTS Coach"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"twelveshifts,card layout,deck of cards"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Twelveshifts V2 / Card layout retrieval test<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body</span> <span class="na">id=</span><span class="s">"page-top"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Twelveshifts Deck layout retrieval test<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;i&gt;</span>Entrypoint URL:<span class="nt">&lt;/i&gt;&lt;br/&gt;</span>
+    <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"source-url"</span> <span class="na">id=</span><span class="s">"source-doc-url"</span> <span class="na">cols=</span><span class="s">"80"</span> <span class="na">placeholder=</span><span class="s">"&lt;DocInterface entrypoint URL&gt;"</span><span class="nt">&gt;</span>http://localhost:3000/doc_interface/card_layout<span class="nt">&lt;/textarea&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;i&gt;</span>POST data payload:<span class="nt">&lt;/i&gt;&lt;br/&gt;</span>
+    <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"source-deck-text"</span> <span class="na">id=</span><span class="s">"source-deck-text"</span> <span class="na">rows=</span><span class="s">"10"</span> <span class="na">cols=</span><span class="s">"80"</span> <span class="na">placeholder=</span><span class="s">"&lt;Copy deck JSON data here&gt;"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"btnReq"</span> <span class="na">value=</span><span class="s">"Send request with above Deck data"</span> <span class="na">id=</span><span class="s">"btn-card-layout"</span> <span class="na">onclick=</span><span class="s">"ajaxTestDoCInterfaceCardLayout();"</span><span class="nt">&gt;</span>
+    <span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"btnClear"</span> <span class="na">value=</span><span class="s">"Clear result"</span> <span class="na">id=</span><span class="s">"btn-clear"</span> <span class="na">onclick=</span><span class="s">"$('#sample-card-layout').html('');"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;hr/&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"btnFlipFront"</span> <span class="na">value=</span><span class="s">"Card front"</span> <span class="na">id=</span><span class="s">"btn-flip-card-front"</span> <span class="na">onclick=</span><span class="s">"$('.card-contents .flipper').css({transform: 'rotateY(0deg)'});"</span><span class="nt">&gt;</span>
+    <span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"btnFlipBack"</span> <span class="na">value=</span><span class="s">"Card back"</span> <span class="na">id=</span><span class="s">"btn-flip-card-back"</span> <span class="na">onclick=</span><span class="s">"$('.card-contents .flipper').css({transform: 'rotateY(180deg)'});"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;p/&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"sample-card-layout"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="kd">function</span> <span class="nx">ajaxTestDoCInterfaceCardLayout</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">sampleJSONDeckData</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#source-deck-text'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="c1">// Call Rails endpoint via AJAX to retrieve the sample card layout:</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#source-doc-url'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+          <span class="na">method</span><span class="p">:</span> <span class="s2">"post"</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="nx">sampleJSONDeckData</span><span class="p">,</span>
+          <span class="na">beforeSend</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="p">},</span>
+          <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"/doc_interface/card_layout call ok."</span><span class="p">);</span>
+                <span class="c1">// Display resulting partial:</span>
+                <span class="nx">$</span><span class="p">(</span><span class="s1">'#sample-card-layout'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span> <span class="nx">result</span> <span class="p">);</span>
+          <span class="p">},</span>
+          <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"/doc_interface/card_layout response error!"</span><span class="p">);</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                <span class="nx">$</span><span class="p">(</span><span class="s1">'#sample-card-layout'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+          <span class="p">},</span>
+          <span class="na">dataType</span><span class="p">:</span> <span class="s2">"html"</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre><h1 id='errors'>Errors</h1>
 <p>Main error codes returned:</p>
 
 <table><thead>
