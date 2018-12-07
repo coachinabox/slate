@@ -48,9 +48,19 @@ function ajaxTestDoCInterfaceCardLayout( jsonDeckData ) {
 Retrieves the rendered HTML partial that can be used to display a single Card with its contents.
 
 The resulting Card "widget" is somehow simplified (and possibly optimized in its usage of the CSS styles).
-It won't have the highlighting feature incorporated, but it'll include the Javascript code for flipping on its sides.
+It won't have the highlighting button or the flip button features incorporated, but it'll embed the CSS code for flipping on its sides.
 
-For this reason, the resulting text should always be _evalutated_ for Javascript code by the callback on a successful retrieval, in order for the flip button to work.
+To flip or display the card on the **front side**, execute the following Javascript code:
+
+```javascript
+$('.card-contents .flipper').css({transform: "rotateY(0deg)"});
+```
+
+To make it flip or display its **back side**, execute this instead:
+
+```javascript
+$('.card-contents .flipper').css({transform: "rotateY(180deg)"});
+```
 
 Currently this resource works only via XHR (AJAX) POST request, with no authentication checks.
 
@@ -146,3 +156,87 @@ The JSON deck data (`jsonDeckData` in the Javascript example) that has to be use
 
 Its format is the one defined by the DeckOfCards API.
 (Current schema at: [CiaB API call for GET deck_details](http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck))
+
+
+
+### The "minimalist", local HTML test page
+
+In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it's possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.
+
+Create somewhere a `test.html` page with the code below, and include in the same directory a copy of `jquery.js`, vers. 1.12 or above, in either standard or minified form (it doesn't matter).
+
+Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying & pasting the avove sample), and then issuing the request by pressing the 'submit request' button.
+
+The current response should weight around 11.9K, with an average timing of 800 msec.
+
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Twelveshifts Deck layout retrieval test">
+    <meta name="author" content="Steve Alloro, BTS Coach">
+    <meta name="keywords" content="twelveshifts,card layout,deck of cards" />
+    <title>Twelveshifts V2 / Card layout retrieval test</title>
+    <script src="./jquery.js"></script>
+  </head>
+
+  <body id="page-top">
+    <p/>
+    <h1>Twelveshifts Deck layout retrieval test</h1>
+    <p/>
+    <i>Entrypoint URL:</i><br/>
+    <textarea name="source-url" id="source-doc-url" cols="80" placeholder="<DocInterface entrypoint URL>">http://localhost:3000/doc_interface/card_layout</textarea>
+    <p/>
+    <i>POST data payload:</i><br/>
+    <textarea name="source-deck-text" id="source-deck-text" rows="10" cols="80" placeholder="<Copy deck JSON data here>"></textarea>
+  	<p/>
+
+  	<input type="button" name="btnReq" value="Send request with above Deck data" id="btn-card-layout" onclick="ajaxTestDoCInterfaceCardLayout();">
+  	&nbsp;
+  	<input type="button" name="btnClear" value="Clear result" id="btn-clear" onclick="$('#sample-card-layout').html('');">
+  	<p/>
+  	<p/>
+    <hr/>
+  	<p/>
+  	<p/>
+
+    <input type="button" name="btnFlipFront" value="Card front" id="btn-flip-card-front" onclick="$('.card-contents .flipper').css({transform: 'rotateY(0deg)'});">
+  	&nbsp;
+  	<input type="button" name="btnFlipBack" value="Card back" id="btn-flip-card-back" onclick="$('.card-contents .flipper').css({transform: 'rotateY(180deg)'});">
+  	<p/>
+  	<p/>
+    <p>
+  	   <div id="sample-card-layout"></div>
+    </p>
+
+    <script>
+  	  function ajaxTestDoCInterfaceCardLayout() {
+  	    var sampleJSONDeckData = $('#source-deck-text').val();
+  	    // Call Rails endpoint via AJAX to retrieve the sample card layout:
+  	    $.ajax({
+  	      url: $('#source-doc-url').val(),
+  	      method: "post",
+  	      data: sampleJSONDeckData,
+  	      beforeSend: function(xhr) {
+  		        return true;
+  	      },
+  	      success: function(result) {
+  		        console.log("/doc_interface/card_layout call ok.");
+  		        // Display resulting partial:
+  		        $('#sample-card-layout').html( result );
+  	      },
+  	      error: function(result) {
+  		        console.log("/doc_interface/card_layout response error!");
+  		        console.log(result);
+  		        $('#sample-card-layout').html('');
+  	      },
+  	      dataType: "html"
+  	    });
+  	  }
+    </script>
+  </body>
+</html>
+```
