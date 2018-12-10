@@ -1059,18 +1059,23 @@ The JWT text token can also be specified as an "Authorization" <code>Bearer</cod
 <p>The resulting Card &quot;widget&quot; is somehow simplified (and possibly optimized in its usage of the CSS styles).
 It won&#39;t have the highlighting button or the flip button features incorporated, but it&#39;ll embed the CSS code for flipping on its sides.</p>
 
-<p>To flip or display the card on the <strong>front side</strong>, execute the following Javascript code:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s2">"rotateY(0deg)"</span><span class="p">});</span>
+<p>To flip to a specific card side to show it, use the Javascript one-liner code displayed on the side panel.</p>
+
+<blockquote>
+<p>One-liners to show or flip to a specific card side:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Show card front side:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(0deg)'</span><span class="p">});</span>
+
+<span class="c1">// Show card back side:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(180deg)'</span><span class="p">});</span>
 </code></pre>
-<p>To make it flip or display its <strong>back side</strong>, execute this instead:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s2">"rotateY(180deg)"</span><span class="p">});</span>
-</code></pre>
-<p>Currently this resource works only via XHR (AJAX) POST request, with no authentication checks.</p>
+<p>Currently this resource works only via POST request, either AJAX or not, with no authentication checks.</p>
 
 <p>Future versions may introduce a static token or a session authorization.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST &lt;TSv2_API_HOST&gt;/doc_interface/card_layout</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h3 id='body-parameters'>Body Parameters</h3><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
 <blockquote>
 <p>Example dataset valid for both the <em>data payload</em> of the Body parameter, or as object value of <code>jsonDeckData</code> in the Javascript example above:</p>
 </blockquote>
@@ -1152,16 +1157,7 @@ It won&#39;t have the highlighting button or the flip button features incorporat
 
 <p>Its format is the one defined by the DeckOfCards API.
 (Current schema at: <a href="http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck">CiaB API call for GET deck_details</a>)</p>
-<h3 id='the-quot-minimalist-quot-local-html-test-page'>The &quot;minimalist&quot;, local HTML test page</h3>
-<blockquote>
-<p>One-liners to show or flip to a specific card side:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="c1">// Show card front side:</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(0deg)'</span><span class="p">});</span>
-
-<span class="c1">// Show card back side:</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(180deg)'</span><span class="p">});</span>
-</code></pre>
+<h3 id='the-quot-minimalist-quot-local-html-test-page'>The &quot;minimalist&quot;, local HTML test page</h3><pre class="highlight shell tab-shell"><code></code></pre><pre class="highlight javascript tab-javascript"><code></code></pre>
 <blockquote>
 <p>Minimal, isolated HTML page that allows to test the <code>doc_interface</code> request:</p>
 </blockquote>
@@ -1241,8 +1237,6 @@ It won&#39;t have the highlighting button or the flip button features incorporat
 <p>Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying &amp; pasting the avove sample), and then issuing the request by pressing the &#39;submit request&#39; button.</p>
 
 <p>The current response should weight around 11.9K, with an average timing of 800 msec.</p>
-
-<p>To flip to a specific card side to show it, use the Javascript code on the side panel.</p>
 <h1 id='errors'>Errors</h1>
 <p>Main error codes returned:</p>
 
