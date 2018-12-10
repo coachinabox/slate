@@ -1153,13 +1153,9 @@ It won&#39;t have the highlighting button or the flip button features incorporat
 <p>Its format is the one defined by the DeckOfCards API.
 (Current schema at: <a href="http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck">CiaB API call for GET deck_details</a>)</p>
 <h3 id='the-quot-minimalist-quot-local-html-test-page'>The &quot;minimalist&quot;, local HTML test page</h3>
-<p>In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it&#39;s possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.</p>
-
-<p>Create somewhere a <code>test.html</code> page with the code below, and include in the same directory a copy of <code>jquery.js</code>, vers. 1.12 or above, in either standard or minified form (it doesn&#39;t matter).</p>
-
-<p>Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying &amp; pasting the avove sample), and then issuing the request by pressing the &#39;submit request&#39; button.</p>
-
-<p>The current response should weight around 11.9K, with an average timing of 800 msec.</p>
+<blockquote>
+<p>Minimal, isolated HTML page that allows to test the <code>doc_interface</code> request:</p>
+</blockquote>
 <pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;head&gt;</span>
@@ -1228,7 +1224,15 @@ It won&#39;t have the highlighting button or the flip button features incorporat
     <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre><h1 id='errors'>Errors</h1>
+</code></pre>
+<p>In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it&#39;s possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.</p>
+
+<p>Create somewhere a <code>test.html</code> page with the code below, and include in the same directory a copy of <code>jquery.js</code>, vers. 1.12 or above, in either standard or minified form (it doesn&#39;t matter).</p>
+
+<p>Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying &amp; pasting the avove sample), and then issuing the request by pressing the &#39;submit request&#39; button.</p>
+
+<p>The current response should weight around 11.9K, with an average timing of 800 msec.</p>
+<h1 id='errors'>Errors</h1>
 <p>Main error codes returned:</p>
 
 <table><thead>
