@@ -161,14 +161,7 @@ Its format is the one defined by the DeckOfCards API.
 
 ### The "minimalist", local HTML test page
 
-In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it's possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.
-
-Create somewhere a `test.html` page with the code below, and include in the same directory a copy of `jquery.js`, vers. 1.12 or above, in either standard or minified form (it doesn't matter).
-
-Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying & pasting the avove sample), and then issuing the request by pressing the 'submit request' button.
-
-The current response should weight around 11.9K, with an average timing of 800 msec.
-
+> Minimal, isolated HTML page that allows to test the `doc_interface` request:
 
 ```html
 <!doctype html>
@@ -240,3 +233,12 @@ The current response should weight around 11.9K, with an average timing of 800 m
   </body>
 </html>
 ```
+
+
+In order to test entrypoint compliance with end-case scenario and any possible data throughput limit, it's possible to create a locally-run crude HTML page that tries to connect to the entrypoint to retrieve the resulting styled HTML partial of the rendered Card.
+
+Create somewhere a `test.html` page with the code below, and include in the same directory a copy of `jquery.js`, vers. 1.12 or above, in either standard or minified form (it doesn't matter).
+
+Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying & pasting the avove sample), and then issuing the request by pressing the 'submit request' button.
+
+The current response should weight around 11.9K, with an average timing of 800 msec.
