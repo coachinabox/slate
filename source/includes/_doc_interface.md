@@ -161,6 +161,16 @@ Its format is the one defined by the DeckOfCards API.
 
 ### The "minimalist", local HTML test page
 
+> One-liners to show or flip to a specific card side:
+
+```javascript
+// Show card front side:
+$('.card-contents .flipper').css({transform: 'rotateY(0deg)'});
+
+// Show card back side:
+$('.card-contents .flipper').css({transform: 'rotateY(180deg)'});
+```
+
 > Minimal, isolated HTML page that allows to test the `doc_interface` request:
 
 ```html
@@ -242,3 +252,5 @@ Create somewhere a `test.html` page with the code below, and include in the same
 Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying & pasting the avove sample), and then issuing the request by pressing the 'submit request' button.
 
 The current response should weight around 11.9K, with an average timing of 800 msec.
+
+To flip to a specific card side to show it, use the Javascript code on the side panel.
