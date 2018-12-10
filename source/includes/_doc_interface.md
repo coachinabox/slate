@@ -50,21 +50,25 @@ Retrieves the rendered HTML partial that can be used to display a single Card wi
 The resulting Card "widget" is somehow simplified (and possibly optimized in its usage of the CSS styles).
 It won't have the highlighting button or the flip button features incorporated, but it'll embed the CSS code for flipping on its sides.
 
-To flip or display the card on the **front side**, execute the following Javascript code:
+
+To flip to a specific card side to show it, use the Javascript one-liner code displayed on the side panel.
+
+
+> One-liners to show or flip to a specific card side:
 
 ```javascript
-$('.card-contents .flipper').css({transform: "rotateY(0deg)"});
+// Show card front side:
+$('.card-contents .flipper').css({transform: 'rotateY(0deg)'});
+
+// Show card back side:
+$('.card-contents .flipper').css({transform: 'rotateY(180deg)'});
 ```
 
-To make it flip or display its **back side**, execute this instead:
 
-```javascript
-$('.card-contents .flipper').css({transform: "rotateY(180deg)"});
-```
-
-Currently this resource works only via XHR (AJAX) POST request, with no authentication checks.
+Currently this resource works only via POST request, either AJAX or not, with no authentication checks.
 
 Future versions may introduce a static token or a session authorization.
+
 
 
 ### HTTP Request
@@ -73,6 +77,12 @@ Future versions may introduce a static token or a session authorization.
 
 
 ### Body Parameters
+
+```shell
+```
+
+```javascript
+```
 
 > Example dataset valid for both the _data payload_ of the Body parameter, or as object value of `jsonDeckData` in the Javascript example above:
 
@@ -161,15 +171,12 @@ Its format is the one defined by the DeckOfCards API.
 
 ### The "minimalist", local HTML test page
 
-> One-liners to show or flip to a specific card side:
+```shell
+```
 
 ```javascript
-// Show card front side:
-$('.card-contents .flipper').css({transform: 'rotateY(0deg)'});
-
-// Show card back side:
-$('.card-contents .flipper').css({transform: 'rotateY(180deg)'});
 ```
+
 
 > Minimal, isolated HTML page that allows to test the `doc_interface` request:
 
@@ -252,5 +259,3 @@ Create somewhere a `test.html` page with the code below, and include in the same
 Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying & pasting the avove sample), and then issuing the request by pressing the 'submit request' button.
 
 The current response should weight around 11.9K, with an average timing of 800 msec.
-
-To flip to a specific card side to show it, use the Javascript code on the side panel.
