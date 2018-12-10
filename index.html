@@ -1154,6 +1154,15 @@ It won&#39;t have the highlighting button or the flip button features incorporat
 (Current schema at: <a href="http://coachinabox.github.io/coach_in_a_box/doc#get-details-about-a-deck">CiaB API call for GET deck_details</a>)</p>
 <h3 id='the-quot-minimalist-quot-local-html-test-page'>The &quot;minimalist&quot;, local HTML test page</h3>
 <blockquote>
+<p>One-liners to show or flip to a specific card side:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Show card front side:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(0deg)'</span><span class="p">});</span>
+
+<span class="c1">// Show card back side:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.card-contents .flipper'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">transform</span><span class="p">:</span> <span class="s1">'rotateY(180deg)'</span><span class="p">});</span>
+</code></pre>
+<blockquote>
 <p>Minimal, isolated HTML page that allows to test the <code>doc_interface</code> request:</p>
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
@@ -1232,6 +1241,8 @@ It won&#39;t have the highlighting button or the flip button features incorporat
 <p>Then open the page with a browser and fill the form in, specifying the URL of the endpoint, filling in the Deck-of-card JSON data (even by copying &amp; pasting the avove sample), and then issuing the request by pressing the &#39;submit request&#39; button.</p>
 
 <p>The current response should weight around 11.9K, with an average timing of 800 msec.</p>
+
+<p>To flip to a specific card side to show it, use the Javascript code on the side panel.</p>
 <h1 id='errors'>Errors</h1>
 <p>Main error codes returned:</p>
 
