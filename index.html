@@ -248,6 +248,9 @@
                   <li>
                     <a href="#post-list-cardsorts-for-a-cohort-of-pathways-api-v2-card_sort-for_cohort" class="toc-h2 toc-link" data-title="POST list CardSorts for a cohort of Pathways (/api/v2/card_sort/for_cohort)"><strong><code>POST</code></strong> list CardSorts for a cohort of Pathways (<code>/api/v2/card_sort/for_cohort</code>)</a>
                   </li>
+                  <li>
+                    <a href="#delete-cardsort-destroy-api-v2-card_sort-destroy" class="toc-h2 toc-link" data-title="DELETE CardSort destroy (/api/v2/card_sort/destroy)"><strong><code>DELETE</code></strong> CardSort destroy (<code>/api/v2/card_sort/destroy</code>)</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -888,6 +891,58 @@ The term &quot;stage&quot; in the source code always refers to these low-level s
 </tbody></table>
 <h3 id='response-fields-2'>Response fields</h3>
 <p>See the <code>/api/v2/card_sort/for_user</code> example.</p>
+
+<hr>
+<h2 id='delete-cardsort-destroy-api-v2-card_sort-destroy'><strong><code>DELETE</code></strong> CardSort destroy (<code>/api/v2/card_sort/destroy</code>)</h2>
+<blockquote>
+<p>Sample call:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -i &lt;TSv2_API_HOST&gt;/api/v2/card_sort/destroy <span class="se">\</span>
+     --data <span class="s1">'jwt=JWT_TEXT_TOKEN'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"&lt;TSv2_API_HOST&gt;/api/v2/card_sort/destroy"</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"delete"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">jwt</span><span class="p">:</span> <span class="nx">JWT_TEXT_TOKEN</span> <span class="p">},</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'API error!'</span> <span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Response (200, &#39;application/json&#39;):</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CardSort &amp; CardStates deleted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Deletes an existing CardSort, given a valid JWT identifying it.</p>
+
+<p>The <code>JWT_TEXT_TOKEN</code> can be easily obtained with a call to the <code>for_user</code> or <code>for_cohort</code> endpoints, which will return valid JWTs for each existing Card sort found with the request.</p>
+
+<p>The CardSort row and all its associated card states will be erased. No local Card or Deck rows will be altered.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE &lt;TSv2_API_HOST&gt;/api/v2/card_sort/destroy</code></p>
+<h3 id='body-parameters-5'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left"><em>Parameter</em></th>
+<th style="text-align: center"><em>Type</em></th>
+<th style="text-align: center"><em>Required?</em></th>
+<th style="text-align: left"><em>Description</em></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>jwt</code></td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: left">dynamic JWT identifying a single Card Sort</td>
+</tr>
+</tbody></table>
 
 <hr>
 <h1 id='controller-sessions'>Controller <strong><code>/sessions</code></strong></h1><h2 id='post-new-http-session-creation-sessions-create'><strong><code>POST</code></strong> new HTTP Session creation (<code>/sessions/create</code>)</h2>
