@@ -378,3 +378,58 @@ See the `/api/v2/card_sort/for_user` example.
 
 
 ---
+
+
+## **`DELETE`** CardSort destroy (`/api/v2/card_sort/destroy`)
+
+> Sample call:
+
+```shell
+curl -X DELETE -H 'Accept: application/json' \
+     -i <TSv2_API_HOST>/api/v2/card_sort/destroy \
+     --data 'jwt=JWT_TEXT_TOKEN'
+```
+
+```javascript
+$.ajax({
+  url: "<TSv2_API_HOST>/api/v2/card_sort/destroy",
+  method: "delete",
+  data: { jwt: JWT_TEXT_TOKEN },
+  success: function(result) {
+    console.log( result.msg );
+  },
+  error: function(result) {
+    console.log( 'API error!' );
+  },
+  dataType: "json"
+});
+```
+
+> Response (200, 'application/json'):
+
+```json
+{
+  "msg": "CardSort & CardStates deleted."
+}
+```
+
+Deletes an existing CardSort, given a valid JWT identifying it.
+
+The `JWT_TEXT_TOKEN` can be easily obtained with a call to the `for_user` or `for_cohort` endpoints, which will return valid JWTs for each existing Card sort found with the request.
+
+The CardSort row and all its associated card states will be erased. No local Card or Deck rows will be altered.
+
+
+### HTTP Request
+
+`DELETE <TSv2_API_HOST>/api/v2/card_sort/destroy`
+
+
+### Body Parameters
+
+| _Parameter_ | _Type_ | _Required?_ | _Description_ |
+| :--- | :---: | :---: | :--- |
+| `jwt` | String | yes | dynamic JWT identifying a single Card Sort |
+
+
+---
