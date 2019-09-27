@@ -21,14 +21,14 @@
    *
    * Example:
    *
-   *     var idx = lunr(function () {
+   *     var idx = lunr(function() {
  *       this.field('title', 10)
  *       this.field('tags', 100)
  *       this.field('body')
  *
  *       this.ref('cid')
  *
- *       this.pipeline.add(function () {
+ *       this.pipeline.add(function() {
  *         // some custom pipeline function
  *       })
  *
@@ -91,7 +91,7 @@
    *
    * @constructor
    */
-  lunr.EventEmitter = function () {
+  lunr.EventEmitter = function() {
     this.events = {}
   }
 
@@ -104,7 +104,7 @@
    * @param {Function} handler The function to call when an event is fired.
    * @memberOf EventEmitter
    */
-  lunr.EventEmitter.prototype.addListener = function () {
+  lunr.EventEmitter.prototype.addListener = function() {
     var args = Array.prototype.slice.call(arguments),
         fn = args.pop(),
         names = args
@@ -232,7 +232,7 @@
    *
    * @constructor
    */
-  lunr.Pipeline = function () {
+  lunr.Pipeline = function() {
     this._stack = []
   }
 
@@ -310,7 +310,7 @@
    * @param {Function} functions Any number of functions to add to the pipeline.
    * @memberOf Pipeline
    */
-  lunr.Pipeline.prototype.add = function () {
+  lunr.Pipeline.prototype.add = function() {
     var fns = Array.prototype.slice.call(arguments)
 
     fns.forEach(function (fn) {
@@ -396,7 +396,7 @@
    *
    * @memberOf Pipeline
    */
-  lunr.Pipeline.prototype.reset = function () {
+  lunr.Pipeline.prototype.reset = function() {
     this._stack = []
   }
 
@@ -408,7 +408,7 @@
    * @returns {Array}
    * @memberOf Pipeline
    */
-  lunr.Pipeline.prototype.toJSON = function () {
+  lunr.Pipeline.prototype.toJSON = function() {
     return this._stack.map(function (fn) {
       lunr.Pipeline.warnIfFunctionNotRegistered(fn)
 
@@ -426,7 +426,7 @@
    *
    * @constructor
    */
-  lunr.Vector = function () {
+  lunr.Vector = function() {
     this._magnitude = null
     this.list = undefined
     this.length = 0
@@ -486,7 +486,7 @@
    * @returns {Number}
    * @memberOf Vector
    */
-  lunr.Vector.prototype.magnitude = function () {
+  lunr.Vector.prototype.magnitude = function() {
     if (this._magniture) return this._magnitude
     var node = this.list,
         sumOfSquares = 0,
@@ -551,7 +551,7 @@
    *
    * @constructor
    */
-  lunr.SortedSet = function () {
+  lunr.SortedSet = function() {
     this.length = 0
     this.elements = []
   }
@@ -579,7 +579,7 @@
    * @param {Object} The objects to add to this set.
    * @memberOf SortedSet
    */
-  lunr.SortedSet.prototype.add = function () {
+  lunr.SortedSet.prototype.add = function() {
     Array.prototype.slice.call(arguments).forEach(function (element) {
       if (~this.indexOf(element)) return
       this.elements.splice(this.locationFor(element), 0, element)
@@ -594,7 +594,7 @@
    * @returns {Array}
    * @memberOf SortedSet
    */
-  lunr.SortedSet.prototype.toArray = function () {
+  lunr.SortedSet.prototype.toArray = function() {
     return this.elements.slice()
   }
 
@@ -736,7 +736,7 @@
    * @returns {lunr.SortedSet}
    * @memberOf SortedSet
    */
-  lunr.SortedSet.prototype.clone = function () {
+  lunr.SortedSet.prototype.clone = function() {
     var clone = new lunr.SortedSet
 
     clone.elements = this.toArray()
@@ -775,7 +775,7 @@
    * @returns {Array}
    * @memberOf SortedSet
    */
-  lunr.SortedSet.prototype.toJSON = function () {
+  lunr.SortedSet.prototype.toJSON = function() {
     return this.toArray()
   }
   /*!
@@ -790,7 +790,7 @@
    *
    * @constructor
    */
-  lunr.Index = function () {
+  lunr.Index = function() {
     this._fields = []
     this._ref = 'id'
     this.pipeline = new lunr.Pipeline
@@ -801,7 +801,7 @@
 
     this._idfCache = {}
 
-    this.on('add', 'remove', 'update', (function () {
+    this.on('add', 'remove', 'update', (function() {
       this._idfCache = {}
     }).bind(this))
   }
@@ -815,7 +815,7 @@
    * @param {Function} handler The serialised set to load.
    * @memberOf Index
    */
-  lunr.Index.prototype.on = function () {
+  lunr.Index.prototype.on = function() {
     var args = Array.prototype.slice.call(arguments)
     return this.eventEmitter.addListener.apply(this.eventEmitter, args)
   }
@@ -1156,7 +1156,7 @@
    * @returns {Object}
    * @memberOf Index
    */
-  lunr.Index.prototype.toJSON = function () {
+  lunr.Index.prototype.toJSON = function() {
     return {
       version: lunr.version,
       fields: this._fields,
@@ -1187,7 +1187,7 @@
  *       // apply any extensions etc here.
  *     }
    *
-   *     var idx = lunr(function () {
+   *     var idx = lunr(function() {
  *       this.use(myPlugin, 'arg1', 'arg2')
  *     })
    *
@@ -1211,7 +1211,7 @@
    * @constructor
    * @module
    */
-  lunr.Store = function () {
+  lunr.Store = function() {
     this.store = {}
     this.length = 0
   }
@@ -1288,7 +1288,7 @@
    * @returns {Object}
    * @memberOf Store
    */
-  lunr.Store.prototype.toJSON = function () {
+  lunr.Store.prototype.toJSON = function() {
     return {
       store: this.store,
       length: this.length
@@ -1698,7 +1698,7 @@
    *
    * @constructor
    */
-  lunr.TokenStore = function () {
+  lunr.TokenStore = function() {
     this.root = { docs: {} }
     this.length = 0
   }
@@ -1872,7 +1872,7 @@
    * @returns {Object}
    * @memberOf TokenStore
    */
-  lunr.TokenStore.prototype.toJSON = function () {
+  lunr.TokenStore.prototype.toJSON = function() {
     return {
       root: this.root,
       length: this.length
@@ -1899,7 +1899,7 @@
       // Browser globals (root is window)
       root.lunr = factory()
     }
-  }(this, function () {
+  }(this, function() {
     /**
      * Just return a value to define the module export.
      * This example returns an object, but the module
